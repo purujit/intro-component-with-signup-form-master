@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Intro component with sign up form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+    function validate() {
+      const first_name = document.getElementById('first_name');
+      const last_name = document.getElementById('last_name');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      for (const input of [first_name, last_name, email, password]) {
+        if (input.validity.valid === false) {
+          const error_div_id = input.id + '_error';
+          input.classList.add("input_error_image");
+          const error_div = document.getElementById(error_div_id);
+          error_div.classList.remove('input_noerror');
+          error_div.classList.add('input_error');
+        }
+        input.addEventListener('focus', hideValidation);
+      }
+    }
+
+    function hideValidation() {
+      const first_name = document.getElementById('first_name');
+      const last_name = document.getElementById('last_name');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      for (const input of [first_name, last_name, email, password]) {
+        const error_div_id = input.id + '_error';
+        input.classList.remove("input_error_image");
+        const error_div = document.getElementById(error_div_id);
+        error_div.classList.add('input_noerror');
+        error_div.classList.remove('input_error');
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <main>
+    <section class="content">
+      <h1>
+        Learn to code by watching others
+      </h1>
+      <span>
+        See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
+        but understanding how developers think is invaluable.
+      </span>
+    </section>
+    <section class="form">
+      <div class="form__try">
+        <span>Try it free 7 days </span> then $20/mo. thereafter
+      </div>
+      <form onmouseleave="hideValidation()">
+        <input type="submit" value="Claim your free trial" onmouseover="validate()">
+        <input type=" text" id="first_name" placeholder="First Name" required>
+        <div id="first_name_error" class="input_noerror">First Name cannot be empty</div>
+        <input type="text" id="last_name" placeholder="Last Name" required>
+        <div id="last_name_error" class="input_noerror">Last Name cannot be empty</div>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <div id="email_error" class="input_noerror">Looks like this is not an email</div>
+        <input type="password" id="password" placeholder="Password" required>
+        <div id="password_error" class="input_noerror">Password cannot be empty</div>
+        </input>
+        <div class="form__terms">
+          By clicking the button, you are agreeing to our <span>Terms and Services</span>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>
